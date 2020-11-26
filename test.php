@@ -1,6 +1,6 @@
 <?php
 
-	$password='testoaoapp';
+	$password='test';
 	echo $password . "<br>";
 
 	$password=password_hash($password, PASSWORD_DEFAULT);

@@ -1,22 +1,23 @@
 <?php
 	session_start();
 	$connect=mysqli_connect('localhost', 'root', '', 'discussion');
+	$connect->query('SET NAMES utf8');
 ?>
 
 <!DOCTYPE html>
 
-<html lang="fr">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
 	<head>
 		<title>Connexion</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta charset="UTF-8">
 		<link rel="preconnect" href="https://fonts.gstatic.com">
 		<link href="https://fonts.googleapis.com/css2?family=Geo&display=swap" rel="stylesheet"> 
-		<link rel="stylesheet" href="module.css?v=<?php echo time(); ?>">
+		<link rel="stylesheet" href="discussion.css?v=<?php echo time(); ?>">
 		<script src="https://kit.fontawesome.com/9ddb75d515.js" crossorigin="anonymous"></script>
 	</head>
 
-	<body>
+	<body id="body_connexion">
 		<?php
 
 			if(!isset($_SESSION['user'])) {
@@ -30,27 +31,27 @@
 
 					if(empty($user)){
 						?>
-						<section class="mess_connexion"><p><?php
-						echo "Identifiant ou mot de passe incorrect.<br>";?> <a href="connexion.php">Réessayez</a><br><a href="">Mot de passe oublié ?</a>
-						</p></section>
+						<main class="err_connexion"><p><?php
+						echo "Identifiant ou mot de passe incorrect.<br>";?><div id="back2index"><a href="connexion.php">Réessayez</a><br><a href="">Mot de passe oublié ?</a></div></p>
+						</main>
 						<?php
 						exit();
 					}
 
 					else{
 						if($login==$user['login']){
-							if($password==$user['password']){
-								?><section class="mess_connexion"><p><?php
-								echo "Vous êtes maintenant connecté. <br>";?> <a href="index.php">Accueil</a>
-								</p></section><?php
+							if(password_verify($password, $user['password'])){
+								?><main class="err_connexion"><p><?php
+								echo "Vous êtes maintenant connecté. <br>";?><div id="back2index"><a href="index.php">Accueil</a></div>
+								</p></main><?php
 								$_SESSION['user']=['login'=>$user['login'], 'password'=>$user['password']];
 								exit();
 							}
 							else{
 								?>
-								<section class="mess_connexion"><p><?php
-								echo "Identifiant ou mot de passe incorrect.<br>";?> <a href="connexion.php">Réessayez</a><br><a href="">Mot de passe oublié ?</a>
-								</p></section>
+								<main class="err_connexion"><p><?php
+								echo "Identifiant ou mot de passe incorrect.<br>";?><div id="back2index"><a href="connexion.php">Réessayez</a><br><a href="">Mot de passe oublié ?</a></div>
+								</p></main>
 								<?php
 								exit();
 							}
@@ -61,25 +62,24 @@
 
 				else{
 			?>
-			<section id="form">
+			<main id="form_connexion">
 				<form method="post" action="connexion.php">
 					<label for="login">Login :</label>
 					<input type="text" id="login" name="login" placeholder="Ex: John-Doe68" required>
 					<label for="password">Mot de passe :</label>
 					<input type="password" id="password" name="password" required>
-					<input type="submit" id="submitbutton" value="Envoyer">
+					<input type="submit" id="submit_button" value="Envoyer">
 				</form>
-			</section>
-
-			<div id="back2index"><p>Retour à l' <a href="index.php">Accueil</a></p></div>
+				<div id="back2index"><p>Retour à l' <a href="index.php">Accueil</a></p></div>
+			</main>
 			<?php
 		}
 
 	}
 
 		else{
-			?><section class="mess_connexion"><?php
-			echo "Vous êtes déjà connecté.<br>";?><div id="back2index"><p>Retour à l' <a href="index.php">Accueil</a>.</p></div></section><?php
+			?><main class="err_connexion"><?php
+			echo "Vous êtes déjà connecté.<br>";?><div id="back2index"><p>Retour à l' <a href="index.php">Accueil</a>.</p></div></main><?php
 		}
 		
 

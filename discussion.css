@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css2?family=Grandstander:wght@300&display=swap');
+
+html{
+	margin:0;
+	padding:0;
+	outline:0;
+	text-align:center;
+}
+
+.strongtext{
+	font-weight:800;
+	color:inherit;
+}
+
+#back2index{
+	font-family:'Grandstander', Courier;
+}
+
+
+/* INDEX */
+
+#body_index a, #back2index a{
+	text-decoration:none;
+	font-weight:800;
+	color:#cc004b;
+}
+
+#body_index a:hover, #main_index #disconnect_button:hover, #back2index a:hover{
+	cursor:pointer;
+	transition:0.4s;
+	color:blue;
+}
+
+#body_index{
+	margin:0;
+	height:100vh;
+	display:flex;
+	align-items:center;
+	justify-content: center;
+	position:relative;
+}
+
+#main_index form{
+	display:inline-block;
+	background:#0099CC;
+	padding:calc(20px + 5vw);
+	font-family:'Grandstander', Courier;
+	color:#CCFFFF;
+	position:relative;
+}
+
+#main_index form img{
+	width:10%;
+}
+
+#body_index #disconnect_button{
+	border:0;
+	background:transparent;
+	font-family:'Grandstander', Courier;
+	color:#cc004b;
+	font-size:inherit;
+	font-weight:800;
+	margin:0;
+	padding:0;
+}
+
+#index_nologin{
+	position:relative;
+	background:#0099CC;
+	margin-left:auto;
+	margin-right:auto;
+	font-family:'Grandstander', Courier;
+	color:#CCFFFF;
+	padding:calc(20px + 5vw);
+}
+
+#index_nologin details summary{
+	list-style-type: none;
+}
+
+#index_nologin details summary:hover{
+	cursor:pointer;
+	color:blue;
+	transition:0.3s;
+}
+
+/* INSCRIPTION - CONNEXION - PROFIL*/
+
+#body_inscription, #body_connexion, #body_profil{
+	display:flex;
+	justify-content: center;
+	align-items:center;
+	height:100vh;
+	font-family:'Grandstander', Courier;
+	color:white;
+}
+
+#form_inscription, .err_connexion, .succ_connexion, #deja_inscrit, #form_connexion, #profile_changes{
+	display:flex;
+	flex-direction:	column;
+	background:#0099CC;
+	padding:calc(20px + 5vw);
+}
+
+#form_inscription form, #form_connexion form, #profile_changes form{
+	display:flex;
+	flex-direction: column;
+}
+
+
+/* DISCUSSION */
+
+#body_discussion{
+	margin:0;
+	position:relative;
+	display:flex;
+	justify-content: center;
+	background: #0099CC;
+}
+
+#main_discussion{
+	position:relative;
+	display:flex;
+	justify-content: center;
+	flex-direction: column;
+}
+
+#main_discussion h1{
+	font-family:'Grandstander', Courier;
+	color:white;
+}
+
+#discussion_nologin{
+	font-family:'Grandstander', Courier;
+	color:white;
+	background:#62C0DF;
+	padding:5%;
+}
+
+.message_block{
+	background:white;
+	position:relative;
+	font-family:'Grandstander', Courier;
+	color:black;
+	padding:2%;
+	border:6px solid;
+	border-image: linear-gradient(90deg, rgba(98,255,92,1) 0%, rgba(255,14,14,1) 25%, rgba(53,39,255,1) 75%, rgba(229,140,250,1) 100%);
+	border-image-slice: 1;
+	border-radius:10px;
+	margin:calc(1% + 10px);
+	font-size:1.3em;
+}
+
+.message_block:nth-child(2n+1){
+	background:#E6E6E6;
+}
+
+.message_by{
+	font-size:0.7em;
+}
+
+#post_message{
+	margin-top:3%;
+}
+
+#post_message #message{
+	font-size:1em;
+	font-family: 'Grandstander', Courier;
+}
+
+#submit_mess_button, #body_discussion #disconnect_button, #submit_button{
+	background:#FFFFFF;
+	color:black;
+	font-family: 'Grandstander', Courier;
+	border:2px solid black;
+	padding:0.8% 2% 0.6% 2%;
+	margin-top:2%;
+	margin-bottom:2%;
+}
+
+#submit_mess_button:hover, #body_discussion #disconnect_button:hover, #submit_button:hover{
+	cursor:pointer;
+	background:#CCCCCC;
+	transform:scale(1.05);
+	transition:0.3s;
+}
+
+@media(width<600px){
+
+	#main_discussion{
+		width:100%;
+	}
+
+	.message_block{
+		margin:0;
+		width:95%;
+		border:0;
+		border-radius:0;
+		border-bottom:3px solid;
+		border-image:linear-gradient(90deg, rgba(205,205,205,0) 0%, rgba(203,203,203,1) 30%, rgba(203,203,203,1) 70%, rgba(229,140,250,0) 100%);
+		border-image-slice:1;
+		align-self:center;
+	}
+
+	textarea#message{
+		width:90%;
+	}
+}
