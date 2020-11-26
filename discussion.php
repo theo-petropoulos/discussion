@@ -14,7 +14,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
 	<head>
-		<title>Fil de discussion</title>
+		<title>Discussion</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta charset="UTF-8">
 		<meta http-equiv="Content-language" content="fr" />
@@ -75,7 +75,7 @@
 			else{
 				?><main id="discussion_nologin">
 					<?php
-					echo "Vous devez être connecté pour accéder à cette page.<br>";?><p><div id="back2index">Retour à l'<a href="index.php">Accueil</a>.</div></p><?php
+					echo "Vous devez être connecté pour accéder à cette page.<br>";?><p><div id="back2index">Se <a href="connexion.php">connecter</a>.<br>Retour à l'<a href="index.php">Accueil</a>.</div></p><?php
 			}
 			$connect->close();
 		?>

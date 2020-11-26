@@ -6,6 +6,19 @@
 	if(isset($_POST) && $_POST){
 		$pre_login=$_SESSION['user']['login'];
 		$login=$_POST['login'];$password=$_POST['password'];
+
+		$login_fetch=$connect->query("SELECT login FROM utilisateurs");
+		for($i=0; $i<mysqli_num_rows($login_fetch); $i++){
+			$row=mysqli_fetch_assoc($login_fetch);
+			if($login==$row['login']){?>
+				<main class="err_connexion"><?php
+				echo("Ce nom d'utilisateur existe déjà.");?>
+				<div id="back2index"><a href="profil.php">Réessayer</a></div><?php
+				?></main><?php
+				exit();
+			}
+		}
+		$password=password_hash($password, PASSWORD_DEFAULT);
 		$stmt=$connect->prepare("UPDATE utilisateurs SET login=?, password=? WHERE login='$pre_login' ");
 		$stmt->bind_param("ss", $login, $password);
 		$stmt->execute();
@@ -38,6 +51,8 @@
 				<h2>Modifier vos informations</h2>
 
 				<form method="post" action="profil.php">
+					<label for="login">Identifiant :</label>
+					<input type="text" id="login" name="login" value=<?php echo $pre[0]; ?> required>
 					<label for="password">Mot de passe :</label>
 					<input type="password" id="password" name="password" value= <?php for($i=0;$i<strlen($pre[1]);$i++){echo "*";}?> required>
 					<input type="submit" id="submit_button" value="Envoyer">
