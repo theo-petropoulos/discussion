@@ -54,7 +54,7 @@
 					<label for="login">Identifiant :</label>
 					<input type="text" id="login" name="login" value=<?php echo $pre[0]; ?> required>
 					<label for="password">Mot de passe :</label>
-					<input type="password" id="password" name="password" value= <?php for($i=0;$i<strlen($pre[1]);$i++){echo "*";}?> required>
+					<input type="password" id="password" name="password" placeholder="*****" required>
 					<input type="submit" id="submit_button" value="Envoyer">
 				</form>
 				<div id="back2index"><p>Retour à l'<a href="index.php">Accueil</a></p></div>
